@@ -1,0 +1,33 @@
+.modal.fade#signUpModal{tabindex: "-1", role: "dialog", "aria-labelledby": "exampleModalLabel", "aria-hidden": "true"}
+  .modal-dialog{role: "document"}
+    .modal-content
+      .modal-header
+        %h5.modal-title#exampleModalLabel
+          Sign Up
+        %button.close{type: "button", "data-dismiss": "modal", "aria-label": "Close"}
+          %span{"aria-hidden": "true"}
+            &times;
+      .modal-body
+        = form_for User.new, html: { multipart: true }, remote: true do |f|
+          .form-group
+            = f.label :name
+            %br
+            = f.text_field(:name, {:class => "form-control"})
+          .form-group
+            = f.label :email
+            %br
+            = f.text_field(:email, {:class => "form-control"})
+          .form-group
+            = f.label :password
+            %br
+            = f.password_field(:password, {:class => "form-control"})
+          .form-group
+            = f.label :password_comfirmation
+            %br
+            = f.password_field(:password_confirmation, {:class => "form-control"})
+          .form-group
+            = f.submit "Sign Up", class: "btn btn-success", id: "doc-modal-submit"
+        
+      .modal-footer
+        %button.btn.btn-secondary{type: "button", "data-dismiss": "modal"}
+          Close
