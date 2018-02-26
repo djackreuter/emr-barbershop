@@ -13,10 +13,8 @@
       %h5.my-0.mr-md-auto.font-weight-normal 
         EMR-Barbershop
       %nav.my-2.my-md-0.mr-md-3
-        %a.p-2.text-dark{href: "#"}
-          Home
-        %a.p-2.text-dark{href: "#"}
-          Users
+        = link_to 'Home', root_path, class: "p-2 text-dark"
+        = link_to 'Users', users_path, class: "p-2 text-dark"
         %a.p-2.text-dark{href: "#"}
           Make Appointment
         %a.p-2.text-dark{href: "#"}
@@ -24,9 +22,11 @@
       
       %a.btn.btn-outline-primary{"data-toggle": "modal", "data-target": "#signUpModal"}
         Sign up
-      %a.btn.btn-outline-success.ml-1{href: "#"}
+      %a.btn.btn-outline-success.ml-1{"data-toggle": "modal", "data-target": "#signInModal"}
         Login
 
     .container
+      = alert
       = yield 
       = render partial: 'users/sign-up'
+      = render partial: 'sessions/sign-in'
