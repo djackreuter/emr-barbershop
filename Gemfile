@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Bcrypt
+gem 'bcrypt', '~> 3.1', '>= 3.1.11'
 # Bootstrap 4
 gem 'bootstrap', '~> 4.0'
 # jQuery
