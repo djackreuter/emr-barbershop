@@ -1,0 +1,25 @@
+.modal.fade#signInModal{tabindex: "-1", role: "dialog", "aria-labelledby": "exampleModalLabel", "aria-hidden": "true"}
+  .modal-dialog{role: "document"}
+    .modal-content
+      .modal-header
+        %h5.modal-title#exampleModalLabel
+          Sign In
+        %button.close{type: "button", "data-dismiss": "modal", "aria-label": "Close"}
+          %span{"aria-hidden": "true"}
+            &times;
+      .modal-body
+        = form_tag login_path, html: { multipart: true }, remote: true do
+          .form-group
+            = label_tag :email
+            %br
+            = text_field_tag :email, '', class: "form-control"
+          .form-group
+            = label_tag :password
+            %br
+            = password_field_tag :password, '', class: "form-control"
+          .form-group
+            %button{type: :submit, class: "btn btn-success" } Login
+        
+      .modal-footer
+        %button.btn.btn-secondary{type: "button", "data-dismiss": "modal"}
+          Close
