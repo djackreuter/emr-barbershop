@@ -22,10 +22,11 @@
         %a.p-2.text-dark{href: "#"}
           Pricing
       
-      %a.btn.btn-outline-primary{href: "#"}
+      %a.btn.btn-outline-primary{"data-toggle": "modal", "data-target": "#signUpModal"}
         Sign up
       %a.btn.btn-outline-success.ml-1{href: "#"}
         Login
 
-    = yield 
-
+    .container
+      = yield 
+      = render partial: 'users/sign-up'
