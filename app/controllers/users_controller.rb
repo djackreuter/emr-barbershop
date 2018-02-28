@@ -9,8 +9,6 @@ class UsersController < ApplicationController
       UserMailer.registration_confirmation(@user).deliver_later
       flash[:alert] = "An email was sent to #{@user.email}. Click the link to confirm your account"
       redirect_to root_path
-      # session[:user_id] = @user.id
-      # redirect_to user_path(@user)
     else
       flash[:alert] = 'Something went wrong, could not register user'
     end
@@ -30,6 +28,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :phone_number, :country_code, :password, :password_confirmation)
   end
 end
