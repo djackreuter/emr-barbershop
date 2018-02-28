@@ -17,6 +17,17 @@
             = f.label :email
             %br
             = f.text_field(:email, {:class => "form-control"})
+
+          .form-group
+            = f.label :country_code
+            %br       
+            = f.select :country_code, ['1'], autofocus: true, class: "form-control"
+  
+          .form-group
+            = f.label :phone_number, "Phone number (area code first)"
+            %br          
+            = f.text_field :phone_number, autofocus: true, class: "form-control"
+    
           .form-group
             = f.label :password
             %br
