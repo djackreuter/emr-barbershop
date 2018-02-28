@@ -26,10 +26,29 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  # Care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
+
+  config.action_mailer.default_url_options = { host: ENV['MAIL_HOST'] }
+  Rails.application.routes.default_url_options[:host] = ENV['MAIL_HOST']
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: 'smtp.mailgun.org',
+    port: 587,
+    authentication: 'plain',
+    domain: ENV['DOMAIN'],
+    enable_starttls_auto: true,
+    user_name: ENV['USERNAME'],
+    password: ENV['PASSWORD']
+  }
+
+  config.action_mailer.delivery_method = :mailgun
+  config.action_mailer.mailgun_settings = {
+    api_key: ENV['API_KEY'],
+    domain: ENV['DOMAIN']
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
