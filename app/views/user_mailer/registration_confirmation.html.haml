@@ -1,0 +1,7 @@
+%p 
+  = "Hey #{@user.name}!"
+
+%p
+  To complete your account registration click the link below!
+
+= confirm_email_user_url(@user.confirm_token)
