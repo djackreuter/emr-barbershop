@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
+  get '/sessions/verify', to: 'sessions#verify', as: :verify
+  post '/sessions/verify', to: 'sessions#check_2fa', as: :check_2fa
 end
