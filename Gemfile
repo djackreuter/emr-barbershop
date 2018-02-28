@@ -5,6 +5,8 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+# Authy
+gem 'authy', '~> 2.7', '>= 2.7.2'
 # Mailgun Ruby
 gem 'mailgun-ruby', '~> 1.1', '>= 1.1.9'
 # Bcrypt
