@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   before_create :confirmation_token
+  after_create :register_with_authy
   has_secure_password
   validates :name, presence: true
   validates :email, presence: true, length: { maximum: 60 }
@@ -9,6 +10,19 @@ class User < ApplicationRecord
     self.email_confirmed = true
     self.confirm_token = nil
     save!(validate: false)
+  end
+
+  def register_with_authy
+    authy = Authy::API.register_user(
+      email: self.email,
+      phone_number: self.phone_number,
+      country_code: '1'
+    )
+    if authy.ok?
+      self.update_column(:authy_id, authy.id)
+    else
+      authy.errors
+    end
   end
 
   private
