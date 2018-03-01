@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def check_2fa
+    flash[:alert] = nil
     user = User.find(session[:pre_2fa_id])
     token = Authy::API.verify(id: user.authy_id, token: params[:token])
     if token.ok?
@@ -13,7 +14,7 @@ class SessionsController < ApplicationController
       session[:pre_2fa_id] = nil
     else
       flash[:alert] = 'Sorry, code was incorrect'
-      redirect_to root_path
+      render template: 'sessions/create'
     end
   end
 
@@ -27,10 +28,11 @@ class SessionsController < ApplicationController
         render template: 'sessions/create'
       else
         flash[:alert] = 'Please confirm your account first'
+        render template: 'sessions/new'
       end
     else
-      redirect_to root_path
       flash[:alert] = 'Email or password is incorrect'
+      render template: 'sessions/new'
     end
   end
 
