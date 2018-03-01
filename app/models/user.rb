@@ -2,10 +2,10 @@ class User < ApplicationRecord
   before_create :confirmation_token
   after_create :register_with_authy
 
-  has_many :barbershops, inverse_of: :users
-  accepts_nested_attributes_for :barbershops, reject_if: proc { |attr| attr['barbershop_name'].blank? || attr['price'].blank? }
+  has_many :barbershops, inverse_of: :user
+  accepts_nested_attributes_for :barbershops
   has_secure_password
-  
+
   validates :name, presence: true
   validates :email, presence: true, length: { maximum: 60 }
   validates :password_digest, presence: true, length: { minimum: 6 }, on: :create
