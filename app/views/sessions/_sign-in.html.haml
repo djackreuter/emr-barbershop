@@ -8,17 +8,7 @@
           %span{"aria-hidden": "true"}
             &times;
       .modal-body
-        = form_tag login_path, html: { multipart: true }, remote: true do
-          .form-group
-            = label_tag :email
-            %br
-            = text_field_tag :email, '', class: "form-control"
-          .form-group
-            = label_tag :password
-            %br
-            = password_field_tag :password, '', class: "form-control"
-          .form-group
-            %button{type: :submit, class: "btn btn-success" } Login
+        = render partial: 'sessions/sign-in-form'
         
       .modal-footer
         %button.btn.btn-secondary{type: "button", "data-dismiss": "modal"}
