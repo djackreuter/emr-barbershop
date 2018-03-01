@@ -8,7 +8,7 @@
           %span{"aria-hidden": "true"}
             &times;
       .modal-body
-        = form_for User.new, html: { multipart: true }, remote: true do |f|
+        = form_for User.new do |f|
           .form-group
             = f.label :name
             %br
@@ -36,6 +36,15 @@
             = f.label :password_comfirmation
             %br
             = f.password_field(:password_confirmation, {:class => "form-control"})
+          
+          .form-group
+            %p
+              Register your barbershop
+              %em
+                (Optional)
+          .form-group
+            = f.fields_for :barbershops do |ff|
+              = render 'barbershop', f: ff
           .form-group
             = f.submit "Sign Up", class: "btn btn-success"
         
