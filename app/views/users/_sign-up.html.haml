@@ -8,7 +8,7 @@
           %span{"aria-hidden": "true"}
             &times;
       .modal-body
-        = form_for User.new do |f|
+        = form_for @user do |f|
           .form-group
             = f.label :name
             %br
@@ -43,9 +43,9 @@
               %em
                 (Optional)
           .form-group
-            - f.object.barbershops.each do |b|
-              = f.fields_for :barbershops, b do |barbershop|
-                = render 'barbershop', locals: { barbershop: barbershop }
+          
+            = f.fields_for :barbershops do |barbershop|
+              = render partial: 'barbershops/barbershop', locals: { barbershop: barbershop }
           .form-group
             = f.submit "Sign Up", class: "btn btn-success"
         
