@@ -43,8 +43,9 @@
               %em
                 (Optional)
           .form-group
-            = f.fields_for :barbershops do |ff|
-              = render 'barbershop', f: ff
+            - f.object.barbershops.each do |b|
+              = f.fields_for :barbershops, b do |barbershop|
+                = render 'barbershop', locals: { barbershop: barbershop }
           .form-group
             = f.submit "Sign Up", class: "btn btn-success"
         
