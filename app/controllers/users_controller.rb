@@ -11,7 +11,8 @@ class UsersController < ApplicationController
       flash[:alert] = "An email was sent to #{@user.email}. Click the link to confirm your account"
       redirect_to root_path
     else
-      flash[:alert] = 'Something went wrong, could not register user'
+      redirect_to root_path
+      flash[:alert] = 'There was a problem with one of your fields, please try again.'
     end
   end
 
