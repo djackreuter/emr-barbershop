@@ -1,2 +1,15 @@
 %h1
-  All Barbershops View
+  All Barbershops
+
+.row
+  - @barbershops.each do |barbershop|
+    .col-lg-6
+      .card.barbershop-card.mt-2.p-4
+        %p
+          Name:
+          = link_to barbershop.barbershop_name, barbershop_path(barbershop)
+        %p  
+          = "Price: $#{barbershop.price}"
+        %p.text-justify
+          Bio:
+          = barbershop.bio
