@@ -3,7 +3,7 @@ class User < ApplicationRecord
   after_create :register_with_authy
 
   has_many :barbershops, inverse_of: :user
-  accepts_nested_attributes_for :barbershops
+  accepts_nested_attributes_for :barbershops, reject_if: proc { |attr| attr['barbershop_name'].blank? || attr['bio'].blank? || attr['price'].blank? }
   has_secure_password
 
   validates :name, presence: true
