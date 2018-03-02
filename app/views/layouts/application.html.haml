@@ -20,10 +20,8 @@
         %a.p-2.text-dark{href: "#"}
           Pricing
       - if !logged_in?
-        %a.btn.btn-outline-primary{"data-toggle": "modal", "data-target": "#signUpModal"}
-          Sign up
-        %a.btn.btn-outline-success.ml-1{"data-toggle": "modal", "data-target": "#signInModal"}
-          Login
+        = link_to "Sign Up", new_user_path, remote: true, class: "btn btn-outline-primary"
+        = link_to "Login", login_path, remote: true, class: "btn btn-outline-success ml-1"
       - else
         = link_to "#{current_user.name}", user_path(current_user), class: "p-2 text-dark"
         %a.p-2.text-dark{href: '/logout'}
@@ -35,5 +33,3 @@
         %p.notice.alert.alert-primary
           = alert
       = yield 
-      = render partial: 'users/sign-up'
-      = render partial: 'sessions/sign-in'

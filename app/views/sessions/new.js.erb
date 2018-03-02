@@ -1,1 +1,3 @@
-$('.modal-body').html('<%= j(render partial: 'sessions/sign-in-form') %>');
+$('body').append('<%= j(render partial: 'sign-in') %>');
+$('#signInModal').modal('show');
+$('.modal-body').html('<%= j(render partial: 'sign-in-form') %>');
