@@ -16,3 +16,6 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+$(document).on('hidden.bs.modal', '.modal', function (e) {
+  $(this).remove();
+});
