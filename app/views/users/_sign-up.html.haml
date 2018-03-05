@@ -44,8 +44,8 @@
                 (Optional)
           .form-group
           
-            = f.fields_for :barbershops do |barbershop|
-              = render partial: 'barbershops/barbershop', locals: { barbershop: barbershop }
+            = f.fields_for :barbershop do |barbershops|
+              = render partial: 'barbershops/barbershop', locals: { barbershops: barbershops }
           .form-group
             = f.submit "Sign Up", class: "btn btn-success"
         
