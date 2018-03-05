@@ -6,9 +6,11 @@ class SessionsController < ApplicationController
   def check_2fa
     flash[:alert] = nil
     user = User.find(session[:pre_2fa_id])
+    barbershop = user.barbershop
     token = Authy::API.verify(id: user.authy_id, token: params[:token])
     if token.ok?
       session[:user_id] = user.id
+      session[:barbershop_id] = barbershop.id
       redirect_to user_path(user)
       flash[:alert] = 'Login successful!'
       session[:pre_2fa_id] = nil
