@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @barbershop = Barbershop.find(params[:barbershop_id])
+    @barbershops = @user.barbershops
   end
 
   def new
     @user = User.new
-    @user.build_barbershop
+    @user.barbershops.build
   end
 
   def create

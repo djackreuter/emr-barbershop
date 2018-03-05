@@ -6,5 +6,5 @@
     .card.p-2
       %p
         Sign in as:
-        -if current_user
-          = link_to "#{@barbershop.barbershop_name}"
+        - @barbershops.each do |barbershop|
+          = link_to "#{barbershop.barbershop_name}"
