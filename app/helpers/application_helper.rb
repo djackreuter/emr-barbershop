@@ -10,4 +10,8 @@ module ApplicationHelper
   def authorize
     redirect_to root_path unless current_user
   end
+
+  def current_barbershop
+    @current_barbershop = current_user.barbershop.find(session[:barbershop_id]) if session[:barbershop_id]
+  end
 end
