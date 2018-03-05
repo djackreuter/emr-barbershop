@@ -7,4 +7,4 @@
       %p
         Sign in as:
         - @barbershops.each do |barbershop|
-          = link_to "#{barbershop.barbershop_name}"
+          = link_to "#{barbershop.barbershop_name}", select_barbershop_path(barbershop), method: :post
