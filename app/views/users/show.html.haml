@@ -1,2 +1,10 @@
 %h1
   User Details View
+
+.row
+  .col-lg-3
+    .card.p-2
+      %p
+        Sign in as:
+        -if current_user
+          = link_to "#{@barbershop.barbershop_name}"
