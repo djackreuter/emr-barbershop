@@ -10,7 +10,8 @@
             %li
               = link_to "#{barbershop.barbershop_name}", select_barbershop_path(barbershop), method: :post
         - if current_barbershop.present?
-          = link_to "#{current_user.name}", barbershop_logout_path
+          %li
+            = link_to "#{current_user.name}", barbershop_logout_path
 
 .row
   .col-lg-3

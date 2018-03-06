@@ -1,2 +1,10 @@
 %h1
   Barbershop Details View
+
+.row
+  .col-lg-4
+    .card.p-2
+      %ul
+        - @users.each do |user|
+          %li
+            = link_to "#{user.name}", user_path(user)
