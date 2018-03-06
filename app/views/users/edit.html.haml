@@ -2,14 +2,18 @@
   Edit User
 .row
   .col-lg-3
-    .card.p-2
-      %p
+    .card.p-1
+      %ul
         Sign in as:
         - if !current_barbershop
           - @barbershops.each do |barbershop|
-            = link_to "#{barbershop.barbershop_name}", select_barbershop_path(barbershop), method: :post
+            %li
+              = link_to "#{barbershop.barbershop_name}", select_barbershop_path(barbershop), method: :post
         - if current_barbershop.present?
           = link_to "#{current_user.name}", barbershop_logout_path
 .row
-  .col-lg-6
+  .col-lg-3
     = link_to "New Barbershop", new_barbershop_path, remote: true, class: "btn btn-primary mt-3"
+    = link_to "Delete Account", user_path(current_user), method: :delete, data: { confirm: "Are you sure? Tears will be shead on this end" }, class: "btn btn-danger mt-3"
+  .col-lg-9
+    = render partial: 'edit'

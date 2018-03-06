@@ -1,0 +1,31 @@
+= form_for @user do |f|
+  .form-group
+    = f.label :name
+    %br
+    = f.text_field(:name, {:class => "form-control"})
+  .form-group
+    = f.label :email
+    %br
+    = f.text_field(:email, {:class => "form-control"})
+
+  .form-group
+    = f.label :country_code
+    %br       
+    = f.select :country_code, ['1'], autofocus: true, class: "form-control"
+
+  .form-group
+    = f.label :phone_number, "Phone number (area code first)"
+    %br          
+    = f.text_field :phone_number, autofocus: true, class: "form-control"
+
+  .form-group
+    = f.label :password
+    %br
+    = f.password_field(:password, {:class => "form-control"})
+  .form-group
+    = f.label :password_comfirmation
+    %br
+    = f.password_field(:password_confirmation, {:class => "form-control"})
+  
+  .form-group
+    = f.submit "Update", class: "btn btn-success"
