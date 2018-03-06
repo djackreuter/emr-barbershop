@@ -5,6 +5,7 @@ class BarbershopsController < ApplicationController
 
   def show
     @barbershop = Barbershop.find(params[:id])
+    @users = @barbershop.users
   end
 
   def new
@@ -49,7 +50,7 @@ class BarbershopsController < ApplicationController
   private
 
   def barbershop_params
-    params.require(:barbershop).permit(:barbershop_name, :bio, :price) 
+    params.require(:barbershop).permit(:barbershop_name, :bio, :price)
   end
 
   def user_id_params
