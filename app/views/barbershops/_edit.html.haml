@@ -1,0 +1,17 @@
+= form_for @barbershop do |f|
+  .form-group
+    = f.label :barbershop_name, "Barbershop name"
+    %br
+    = f.text_field :barbershop_name, autofocus: true, class: "form-control"
+  .form-group
+    = f.label :bio
+    %br
+    = f.text_area :bio, autofocus: true, class: "form-control", placeholder: "500 characters max"
+
+  .form-group
+    = f.label :price, "Price of haircut, numbers only"
+    %br
+    = f.text_field :price, autofocus: true, class: "form-control"
+    
+  .form-group
+    = f.submit "Update", class: "btn btn-success"
