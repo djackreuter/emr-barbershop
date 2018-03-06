@@ -18,6 +18,7 @@ class BarbershopsController < ApplicationController
   def update
     @barbershop = Barbershop.find(params[:id])
     if @barbershop.update(barbershop_params)
+      @barbershop.members.create(user_id: user_id_params[:user_ids])
       flash[:alert] = 'Barbershop updated successfully'
       redirect_to barbershop_path(@barbershop)
     else
@@ -48,6 +49,10 @@ class BarbershopsController < ApplicationController
   private
 
   def barbershop_params
-    params.require(:barbershop).permit(:barbershop_name, :bio, :price)
+    params.require(:barbershop).permit(:barbershop_name, :bio, :price) 
+  end
+
+  def user_id_params
+    params.require(:users).permit(:user_ids)
   end
 end
