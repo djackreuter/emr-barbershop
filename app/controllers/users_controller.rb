@@ -26,6 +26,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:alert] = 'Profile updated successfully'
+      redirect_to user_path(@user)
+    else
+      flash[:alert] = 'Couldn\'t update profile something went wrong.'
+      redirect_to edit_user_path(@user)
+    end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:alert] = 'Account deleated successfully :('
+    redirect_to root_path
+  end
+
   def confirm_email
     user = User.find_by_confirm_token(params.dig(:id))
     if user
