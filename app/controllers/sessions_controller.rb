@@ -48,7 +48,7 @@ class SessionsController < ApplicationController
     if current_user.present?
       @current_barbershop = current_user.barbershops.find(params[:barbershop_id])
       session[:barbershop_id] = @current_barbershop.id
-      redirect_to barbershop_path(current_barbershop)
+      redirect_to edit_barbershop_path(current_barbershop)
     else
       flash[:alert] = 'Could not locate barbershop'
     end
@@ -56,6 +56,6 @@ class SessionsController < ApplicationController
 
   def barbershop_logout
     session[:barbershop_id] = nil
-    redirect_to user_path(current_user)
+    redirect_to edit_user_path(current_user)
   end
 end
