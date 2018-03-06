@@ -12,6 +12,4 @@
           = link_to "#{current_user.name}", barbershop_logout_path
 .row
   .col-lg-6
-    %p
-      Add a new barbershop
-      = link_to "New Barbershop"
+    = link_to "New Barbershop", new_barbershop_path, remote: true, class: "btn btn-primary mt-3"

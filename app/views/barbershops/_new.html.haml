@@ -1,0 +1,32 @@
+.modal.fade#newBarbershopModal{tabindex: "-1", role: "dialog", "aria-labelledby": "exampleModalLabel", "aria-hidden": "true"}
+  .modal-dialog{role: "document"}
+    .modal-content
+      .modal-header
+        %h5.modal-title#exampleModalLabel
+          New Barbershop
+        %button.close{type: "button", "data-dismiss": "modal", "aria-label": "Close"}
+          %span{"aria-hidden": "true"}
+            &times;
+      .modal-body
+        = form_for @barbershop do |f|
+          .form-group
+            = f.label :barbershop_name, "Barbershop name"
+            %br
+            = f.text_field :barbershop_name, autofocus: true, class: "form-control"
+            
+          .form-group
+            = f.label :bio
+            %br
+            = f.text_area :bio, autofocus: true, class: "form-control", placeholder: "500 characters max"
+
+          .form-group
+            = f.label :price, "Price of haircut, numbers only"
+            %br
+            = f.text_field :price, autofocus: true, class: "form-control"
+
+          .form-group
+            = f.submit "Sign Up", class: "btn btn-success"
+        
+      .modal-footer
+        %button.btn.btn-secondary{type: "button", "data-dismiss": "modal"}
+          Close
