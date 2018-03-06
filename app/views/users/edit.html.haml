@@ -1,0 +1,17 @@
+%h1
+  Edit User
+.row
+  .col-lg-3
+    .card.p-2
+      %p
+        Sign in as:
+        - if !current_barbershop
+          - @barbershops.each do |barbershop|
+            = link_to "#{barbershop.barbershop_name}", select_barbershop_path(barbershop), method: :post
+        - if current_barbershop.present?
+          = link_to "#{current_user.name}", barbershop_logout_path
+.row
+  .col-lg-6
+    %p
+      Add a new barbershop
+      = link_to "New Barbershop"

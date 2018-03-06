@@ -4,6 +4,11 @@ class UsersController < ApplicationController
     @barbershops = @user.barbershops
   end
 
+  def edit
+    @user = User.find(params[:id])
+    @barbershops = @user.barbershops
+  end
+
   def new
     @user = User.new
     @user.barbershops.build
