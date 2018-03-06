@@ -10,7 +10,6 @@ class SessionsController < ApplicationController
     token = Authy::API.verify(id: user.authy_id, token: params[:token])
     if token.ok?
       session[:user_id] = user.id
-      # session[:barbershop_id] = barbershop.id
       redirect_to user_path(user)
       flash[:alert] = 'Login successful!'
       session[:pre_2fa_id] = nil
@@ -49,6 +48,14 @@ class SessionsController < ApplicationController
     if current_user.present?
       @current_barbershop = current_user.barbershops.find(params[:barbershop_id])
       session[:barbershop_id] = @current_barbershop.id
+      redirect_to barbershop_path(current_barbershop)
+    else
+      flash[:alert] = 'Could not locate barbershop'
     end
+  end
+
+  def barbershop_logout
+    session[:barbershop_id] = nil
+    redirect_to user_path(current_user)
   end
 end
