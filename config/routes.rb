@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'barbershops#index'
   resources :barbershops do
     resources :users
+    resources :appointments, only: [:create, :index]
   end
   resources :users do
     member do
