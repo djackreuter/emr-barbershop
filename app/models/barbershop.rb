@@ -1,4 +1,5 @@
 class Barbershop < ApplicationRecord
+  has_many :appointments, inverse_of: :barbershop
   has_many :members
   has_many :users, through: :members
   validates :barbershop_name, presence: true
