@@ -1,0 +1,16 @@
+%h1
+  All Users
+
+.row
+  - @users.each do |user|
+    .col-lg-6
+      .card.mt-2.p-4
+        %p
+          Name:
+          = link_to user.name, user_path(user)
+        %ul.barbershop-list 
+          Barbershops:
+          - user.barbershops.each do |shop|
+            %li
+              = link_to shop.barbershop_name, barbershop_path(shop)
+    
