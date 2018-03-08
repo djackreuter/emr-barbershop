@@ -2,10 +2,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'barbershops#index'
   resources :barbershops do
+    resources :posts
     resources :users
     resources :appointments, only: [:create, :index, :new, :destroy]
   end
   resources :users do
+    resources :posts
     member do
       get :confirm_email
     end
