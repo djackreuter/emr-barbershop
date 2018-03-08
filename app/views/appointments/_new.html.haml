@@ -1,0 +1,26 @@
+.modal.fade#apptModal{tabindex: "-1", role: "dialog", "aria-labelledby": "exampleModalLabel", "aria-hidden": "true"}
+  .modal-dialog{role: "document"}
+    .modal-content
+      .modal-header
+        %h5.modal-title#exampleModalLabel
+          Schedule an Appointment!
+        %button.close{type: "button", "data-dismiss": "modal", "aria-label": "Close"}
+          %span{"aria-hidden": "true"}
+            &times;
+      .modal-body
+        = form_for([@barbershop, Appointment.new], remote: true) do |f|
+          .form-group
+            = f.label :cust_name, "Name"
+            %br
+            = f.text_field :cust_name, class: "form-control"
+          .form-group
+            = f.label :appt_time, "Appointment Time"
+            %br
+            = f.time_select :appt_time, class: "form-control"
+
+          .form-group
+            = f.submit "Schedule", class: "btn btn-success"
+        
+      .modal-footer
+        %button.btn.btn-secondary{type: "button", "data-dismiss": "modal"}
+          Close
