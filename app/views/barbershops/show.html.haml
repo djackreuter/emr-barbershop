@@ -11,3 +11,7 @@
         - @users.each do |user|
           %li
             = link_to "#{user.name}", user_path(user)
+  .col-lg-6
+    = link_to "Make an Appointment", new_barbershop_appointment_path(@barbershop, @appointment), remote: true, class: "btn btn-primary"
+
+
