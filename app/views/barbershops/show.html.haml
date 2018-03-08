@@ -14,4 +14,11 @@
   .col-lg-6
     = link_to "Make an Appointment", new_barbershop_appointment_path(@barbershop, @appointment), remote: true, class: "btn btn-primary"
 
+.row
+  .col-lg-12.mt-4
+    %h2
+      Appointments
+    #appointments.mt-3
+      = render partial: 'appointments/appointment', collection: @barbershop.appointments
+
 

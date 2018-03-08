@@ -16,7 +16,7 @@
           .form-group
             = f.label :appt_time, "Appointment Time"
             %br
-            = f.time_select :appt_time, class: "form-control"
+            = f.time_select :appt_time, class: "form-control", ampm: true
 
           .form-group
             = f.submit "Schedule", class: "btn btn-success"

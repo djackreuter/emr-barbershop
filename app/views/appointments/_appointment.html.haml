@@ -1,0 +1,10 @@
+.card.p-3.mb-3.appt-cards
+  %p
+    = "Customer: #{appointment.cust_name}"
+  
+  %p
+    = "Time: #{appointment.appt_time.in_time_zone('America/Denver').strftime('%H:%M')}"
+
+  - if user_belongs_to_shop
+    %p
+      = link_to 'Seen', barbershop_appointment_path(appointment.barbershop, appointment), method: :delete
