@@ -1,0 +1,27 @@
+.modal.fade#newPostModal{tabindex: "-1", role: "dialog", "aria-labelledby": "exampleModalLabel", "aria-hidden": "true"}
+  .modal-dialog{role: "document"}
+    .modal-content
+      .modal-header
+        %h5.modal-title#exampleModalLabel
+          New Post
+        %button.close{type: "button", "data-dismiss": "modal", "aria-label": "Close"}
+          %span{"aria-hidden": "true"}
+            &times;
+      .modal-body
+        = form_for([@barbershop, Post.new], remote: true) do |f|
+          .form-group
+            = f.label :title, "Title"
+            %br
+            = f.text_field :title, autofocus: true, class: "form-control"
+            
+          .form-group
+            = f.label :body
+            %br
+            = f.text_area :body, autofocus: true, class: "form-control post-field", placeholder: "1000 characters max"
+
+          .form-group
+            = f.submit "Publish", class: "btn btn-success"
+        
+      .modal-footer
+        %button.btn.btn-secondary{type: "button", "data-dismiss": "modal"}
+          Close
