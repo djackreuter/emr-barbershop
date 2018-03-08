@@ -19,6 +19,13 @@
 .row
   .col-lg-12.mt-4
     %h2
+      Posts
+    #barbershop-posts.mt-3
+      = render partial: 'posts/post', collection: @barbershop.posts
+
+.row
+  .col-lg-12.mt-4
+    %h2
       Appointments
     #appointments.mt-3
       = render partial: 'appointments/appointment', collection: @barbershop.appointments
