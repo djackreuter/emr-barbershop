@@ -4,6 +4,11 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def edit
+    @barbershop = Barbershop.find(params[:barbershop_id])
+    @post = @barbershop.posts.find(params[:id])
+  end
+
   def create
     @barbershop = Barbershop.find(params[:barbershop_id])
     @post = @barbershop.posts.create(post_params)
@@ -13,6 +18,19 @@ class PostsController < ApplicationController
       else
         flash[:alert] = 'Something bad happened and your post wasn\'t published. Try again'
         render template 'posts/new'
+      end
+    end
+  end
+
+  def update
+    @barbershop = Barbershop.find(params[:barbershop_id])
+    @post = @barbershop.posts.find(params[:id])
+    respond_to do |format|
+      if @post.update_attributes(post_params)
+        format.js
+      else
+        flash[:alert] = 'Something bad happened and your post wasn\'t updated. Try again'
+        render template 'posts/edit'
       end
     end
   end
