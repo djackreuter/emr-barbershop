@@ -3,7 +3,7 @@
     = "Customer: #{appointment.cust_name}"
   
   %p
-    = "Time: #{appointment.appt_time.in_time_zone('America/Denver').strftime('%H:%M')}"
+    = "Time: #{appointment.appt_time.strftime('%l:%M%p')}"
 
   - if user_belongs_to_shop
     %p
