@@ -14,4 +14,8 @@ module ApplicationHelper
   def current_barbershop
     @current_barbershop = current_user.barbershops.find(session[:barbershop_id]) if session[:barbershop_id]
   end
+
+  def user_belongs_to_shop
+    current_user.barbershops.include?(current_barbershop)
+  end
 end
