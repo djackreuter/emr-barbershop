@@ -6,4 +6,8 @@ class Barbershop < ApplicationRecord
   validates :barbershop_name, presence: true
   validates :bio, length: { maximum: 500 }
   validates :price, presence: true
+
+  def view_name
+    barbershop_name
+  end
 end

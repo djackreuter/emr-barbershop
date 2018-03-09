@@ -31,6 +31,10 @@ class User < ApplicationRecord
     end
   end
 
+  def view_name
+    name
+  end
+
   private
 
   def confirmation_token
