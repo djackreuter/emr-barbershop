@@ -13,7 +13,7 @@
             = link_to "#{user.name}", user_path(user)
   .col-lg-3
     = link_to "Make an Appointment", new_barbershop_appointment_path(@barbershop, @appointment), remote: true, class: "btn btn-primary"
-    - if user_belongs_to_shop
+    - if logged_in? && user_belongs_to_shop
       = link_to "New Post", new_barbershop_post_path(@barbershop, @post), remote: true, class: "btn btn-info mt-2"
 
 .row
