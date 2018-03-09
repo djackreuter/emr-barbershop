@@ -12,3 +12,9 @@
       = link_to 'delete', barbershop_post_path(post.postable, post), method: :delete
       |
       = link_to 'edit', edit_barbershop_post_path(post.postable, post), remote: true
+
+  - if logged_in? && current_user
+    %p
+      = link_to 'delete', user_post_path(post.postable, post), method: :delete
+      |
+      = link_to 'edit', edit_user_post_path(post.postable, post), remote: true

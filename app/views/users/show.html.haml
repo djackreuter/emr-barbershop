@@ -11,3 +11,13 @@
         - @barbershops.each do |barbershop|
           %li
             = link_to "#{barbershop.barbershop_name}", barbershop_path(barbershop)
+.col-lg-3
+  - if logged_in?
+    = link_to "New Post", new_user_post_path(@user, @post), remote: true, class: "btn btn-info mt-2"
+
+.row
+  .col-lg-12.mt-4
+    %h2
+      Posts
+    #posts.mt-3
+      = render partial: 'posts/post', collection: @user.posts
