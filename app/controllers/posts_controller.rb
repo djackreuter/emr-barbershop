@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :find_postable
+  before_action :authorize
   def new
     @post = Post.new
   end
@@ -35,7 +36,7 @@ class PostsController < ApplicationController
   def destroy
     @post = @postable.posts.find(params[:id])
     @post.destroy
-    redirect_to pollymorphic_path(@postable)
+    redirect_to polymorphic_path(@postable)
   end
 
   private

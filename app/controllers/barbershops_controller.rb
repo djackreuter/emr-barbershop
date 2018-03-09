@@ -1,4 +1,5 @@
 class BarbershopsController < ApplicationController
+  before_action :authorize, only: [:new, :edit, :update, :create, :destroy]
   def index
     @barbershops = Barbershop.all
   end

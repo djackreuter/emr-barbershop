@@ -9,6 +9,7 @@ module ApplicationHelper
 
   def authorize
     redirect_to root_path unless current_user
+    flash[:alert] = 'You must be logged in to do that'
   end
 
   def current_barbershop
