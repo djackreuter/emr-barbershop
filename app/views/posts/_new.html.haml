@@ -18,6 +18,10 @@
             = f.label :body
             %br
             = f.text_area :body, autofocus: true, class: "form-control post-field", placeholder: "1000 characters max"
+          - if current_barbershop
+            .form-group
+              = f.label :private, "Make Private", class: "form-check-label"
+              = f.check_box :private, autofocus: true, class: "ml-2"
 
           .form-group
             = f.submit "Publish", class: "btn btn-success"

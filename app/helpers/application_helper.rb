@@ -9,11 +9,13 @@ module ApplicationHelper
 
   def authorize
     redirect_to root_path unless current_user
-    flash[:alert] = 'You must be logged in to do that'
+    if !logged_in? || !current_user
+      flash[:alert] = 'You must be logged in to do that'
+    end
   end
 
   def current_barbershop
-    @current_barbershop = current_user.barbershops.find(session[:barbershop_id]) if session[:barbershop_id]
+    @current_barbershop ||= current_user.barbershops.find(session[:barbershop_id]) if session[:barbershop_id]
   end
 
   def user_belongs_to_shop

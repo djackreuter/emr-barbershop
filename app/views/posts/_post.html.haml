@@ -1,20 +1,22 @@
-.card.p-3.mb-3.appt-cards{id: "post_#{post.id}"}
-  %p
-    = post.postable.view_name
-  %p
-    = post.title
-  
-  %p
-    = post.body
-
-  - if logged_in? && user_belongs_to_shop
+- if !post.private
+  .card.p-3.mb-3.appt-cards{id: "post_#{post.id}"}
     %p
-      = link_to 'delete', barbershop_post_path(post.postable, post), method: :delete
-      |
-      = link_to 'edit', edit_barbershop_post_path(post.postable, post), remote: true
-
-  - if logged_in? && current_user
+      = post.postable.view_name
     %p
-      = link_to 'delete', user_post_path(post.postable, post), method: :delete
-      |
-      = link_to 'edit', edit_user_post_path(post.postable, post), remote: true
+      = post.title
+    
+    %p
+      = post.body
+
+    - if logged_in? && user_belongs_to_shop && current_barbershop
+      %p
+        = link_to 'delete', barbershop_post_path(post.postable, post), method: :delete
+        |
+        = link_to 'edit', edit_barbershop_post_path(post.postable, post), remote: true
+
+    - if logged_in? && current_user && controller_name == 'users'
+      %p
+        = link_to 'delete', user_post_path(post.postable, post), method: :delete
+        |
+        = link_to 'edit', edit_user_post_path(post.postable, post), remote: true
+
