@@ -1,17 +1,15 @@
 class PostsController < ApplicationController
+  before_action :find_postable
   def new
-    @barbershop = Barbershop.find(params[:barbershop_id])
     @post = Post.new
   end
 
   def edit
-    @barbershop = Barbershop.find(params[:barbershop_id])
-    @post = @barbershop.posts.find(params[:id])
+    @post = @postable.posts.find(params[:id])
   end
 
   def create
-    @barbershop = Barbershop.find(params[:barbershop_id])
-    @post = @barbershop.posts.create(post_params)
+    @post = @postable.posts.create(post_params)
     respond_to do |format|
       if @post.save
         format.js
@@ -23,8 +21,7 @@ class PostsController < ApplicationController
   end
 
   def update
-    @barbershop = Barbershop.find(params[:barbershop_id])
-    @post = @barbershop.posts.find(params[:id])
+    @post = @postable.posts.find(params[:id])
     respond_to do |format|
       if @post.update_attributes(post_params)
         format.js
@@ -36,15 +33,22 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @barbershop = Barbershop.find(params[:barbershop_id])
-    @post = @barbershop.posts.find(params[:id])
+    @post = @postable.posts.find(params[:id])
     @post.destroy
-    redirect_to barbershop_path(@barbershop)
+    redirect_to pollymorphic_path(@postable)
   end
 
   private
 
   def post_params
     params.require(:post).permit(:title, :body)
+  end
+
+  def find_postable
+    if params[:user_id].present?
+      @postable = User.find(params[:user_id])
+    elsif params[:barbershop_id].present?
+      @postable = Barbershop.find(params[:barbershop_id])
+    end
   end
 end

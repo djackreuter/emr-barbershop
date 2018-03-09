@@ -8,7 +8,7 @@
           %span{"aria-hidden": "true"}
             &times;
       .modal-body
-        = form_for([@barbershop, @post], remote: true) do |f|
+        = form_for([@postable, @post], remote: true) do |f|
           .form-group
             = f.label :title, "Title"
             %br
