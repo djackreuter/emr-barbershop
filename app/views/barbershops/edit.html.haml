@@ -16,5 +16,6 @@
 .row
   .col-lg-3
     = link_to "Delete Account", barbershop_path(current_barbershop), method: :delete, data: { confirm: "Are you sure? Tears will be shead on this end" }, class: "btn btn-danger mt-3"
+    = link_to "View Profile", barbershop_path(current_barbershop), class: "btn btn-success mt-3"
   .col-lg-9
     = render partial: 'edit'
