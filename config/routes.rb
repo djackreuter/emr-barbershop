@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   get '/sessions/verify', to: 'sessions#verify', as: :verify
   post '/sessions/verify', to: 'sessions#check_2fa', as: :check_2fa
   post '/sessions/select_barbershop/:barbershop_id', to: 'sessions#select_barbershop', as: :select_barbershop
+  get '/barbershops/:barbershop_id/private', to: 'barbershops#private_posts', as: :private_posts
 end
