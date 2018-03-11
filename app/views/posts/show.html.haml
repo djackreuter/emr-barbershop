@@ -13,7 +13,7 @@
           %p
             = post.body
 
-          - if logged_in? && current_user && controller_name == 'posts'
+          - if logged_in? && current_user # && controller_name == 'posts'
             %p
               = link_to 'delete', barbershop_post_path(post.postable, post), method: :delete
               |
