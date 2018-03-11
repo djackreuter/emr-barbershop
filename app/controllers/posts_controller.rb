@@ -39,6 +39,16 @@ class PostsController < ApplicationController
     redirect_to polymorphic_path(@postable)
   end
 
+  def show
+    if user_belongs_to_shop
+      @barbershop = current_user.barbershops.find(params[:barbershop_id])
+      @posts = @barbershop.posts
+    else
+      flash[:alert] = 'You are not allowed to view this content'
+      redirect_to root_path
+    end
+  end
+
   private
 
   def post_params
