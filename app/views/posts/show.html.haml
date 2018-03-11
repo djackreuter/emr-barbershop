@@ -1,0 +1,21 @@
+.row
+  .col-lg-12.mt-4
+    %h2
+      Private Posts
+    - @posts.each do |post|
+      - if post.private
+        .card.p-3.mb-3.appt-cards.private-cards{id: "post_#{post.id}"}
+          %p
+            = post.postable.view_name
+          %p
+            = post.title
+          
+          %p
+            = post.body
+
+          - if logged_in? && current_user && controller_name == 'posts'
+            %p
+              = link_to 'delete', barbershop_post_path(post.postable, post), method: :delete
+              |
+              = link_to 'edit', edit_barbershop_post_path(post.postable, post), remote: true
+        
