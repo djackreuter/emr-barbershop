@@ -44,6 +44,7 @@ class BarbershopsController < ApplicationController
   def destroy
     @barbershop = Barbershop.find(params[:id])
     @barbershop.destroy
+    session[:barbershop_id] = nil
     flash[:alert] = 'Barbershop deleted successfully'
     redirect_to root_path
   end

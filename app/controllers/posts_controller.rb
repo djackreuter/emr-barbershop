@@ -42,7 +42,7 @@ class PostsController < ApplicationController
   def show
     if user_belongs_to_shop
       @barbershop = current_user.barbershops.find(params[:barbershop_id])
-      @posts = @barbershop.posts
+      @posts = @barbershop.posts.ordered
     else
       flash[:alert] = 'You are not allowed to view this content'
       redirect_to root_path
