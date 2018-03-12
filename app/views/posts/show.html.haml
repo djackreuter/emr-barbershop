@@ -5,13 +5,15 @@
     - @posts.each do |post|
       - if post.private
         .card.p-3.mb-3.appt-cards.private-cards{id: "post_#{post.id}"}
-          %p
-            = post.postable.view_name
-          %p
-            = post.title
+          %h3
+            %strong
+              = post.title
           
           %p
             = post.body
+
+          %p
+            = post.created_at.strftime('%b %e %Y')
 
           - if logged_in? && current_user # && controller_name == 'posts'
             %p

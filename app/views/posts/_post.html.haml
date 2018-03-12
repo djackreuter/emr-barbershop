@@ -1,12 +1,14 @@
 - if !post.private
   .card.p-3.mb-3.appt-cards{id: "post_#{post.id}"}
-    %p
-      = post.postable.view_name
-    %p
-      = post.title
+    %h3
+      %strong
+        = post.title
     
     %p
       = post.body
+
+    %p
+      = post.created_at.strftime('%b %e %Y')
 
     - if logged_in? && user_belongs_to_shop && current_barbershop && controller_name == 'barbershops'
       %p

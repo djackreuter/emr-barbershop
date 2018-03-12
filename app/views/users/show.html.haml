@@ -20,4 +20,4 @@
     %h2
       Posts
     #posts.mt-3
-      = render partial: 'posts/post', collection: @user.posts
+      = render partial: 'posts/post', collection: @user.posts.ordered
