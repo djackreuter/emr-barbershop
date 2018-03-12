@@ -11,6 +11,8 @@ class User < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true, length: { maximum: 60 }
   validates :password_digest, presence: true, length: { minimum: 6 }, on: :create
+  validates :phone_number, presence: true, length: { is: 10 }
+  validates :country_code, presence: true, acceptance: { accept: '1' }
 
   def email_activate
     self.email_confirmed = true
