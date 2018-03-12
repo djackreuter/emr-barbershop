@@ -18,7 +18,7 @@ RSpec.describe UsersController, type: :controller do
     it 'creates a user' do
       user
       post :create, params: { user: { name: user.name, email: user.email, password: user.password, password_confirmation: user.password_confirmation, country_code: user.country_code, phone_number: user.phone_number } }
-      expect(flash[:alert]).to match(/confirm/) 
+      expect(flash[:alert]).to match(/confirm/)
     end
   end
 
