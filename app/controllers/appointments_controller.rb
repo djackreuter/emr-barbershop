@@ -10,6 +10,7 @@ class AppointmentsController < ApplicationController
     @appointment = @barbershop.appointments.create(appt_params)
     respond_to do |format|
       if @appointment.save
+        flash[:alert] = 'Appointment created successfully'
         format.js
       else
         flash[:alert] = 'Something went wrong, please try again'
