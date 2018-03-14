@@ -11,7 +11,7 @@ RSpec.describe SessionsController, type: :controller do
     user.save(validate: false)
     user
   end
-  context 'GET delete' do
+  context 'DELETE destroy' do
     it 'logs the user out' do
       user
       get :destroy, params: { id: user.id }
@@ -30,6 +30,18 @@ RSpec.describe SessionsController, type: :controller do
       post :select_barbershop, params: { barbershop_id: barbershop.id }
       session[:barbershop_id] = user.barbershop_ids
       expect(response).to redirect_to(edit_barbershop_path(user.barbershop_ids))
+    end
+  end
+
+  context 'DELETE barbershop_logout' do
+    it 'logs user out of barbershop' do
+      user
+      barbershop
+      session[:user_id] = user.id
+      user.barbershop_ids = barbershop.id
+      session[:barbershop_id] = user.barbershop_ids
+      get :barbershop_logout, params: { id: user.id }
+      expect(:barbershop_id).to eq(nil)
     end
   end
 end
