@@ -12,7 +12,7 @@
           %li
             = link_to "#{barbershop.barbershop_name}", barbershop_path(barbershop)
 .col-lg-3
-  - if logged_in?
+  - if logged_in? && current_user
     = link_to "New Post", new_user_post_path(@user, @post), remote: true, class: "btn btn-info mt-2"
 
 .row
